@@ -1,0 +1,26 @@
+<%- include("header"); -%>
+
+    
+        <!-- <a href="/newArticle" class="btn btn-success">New Article</a>  -->
+        
+      
+        <% articles.forEach(article => { %>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                  <h4 class="card-title"><%= article.title %></h4>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= article.date %></h6>
+                  <p class="card-text"><%= article.description %></p>
+                  <form action="/delete" method="post">
+                      <a href="/articles/<%= article.title %>" class="btn btn-primary">Read More</a>
+                      <a href="/edit/<%= article.title %>" class="btn btn-secondary">Edit</a>
+                      <button type="submit" class="btn btn-danger" name="deleteName" value="<%= article.title %>">Delete</button>
+                  </form>
+                </div>
+              </div>
+
+        <% }); %> 
+        
+    </div>
+  </body>
+</html>
