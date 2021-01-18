@@ -3,8 +3,15 @@
     
         <!-- <a href="/newArticle" class="btn btn-success">New Article</a>  -->
         
-      
-        <% articles.forEach(article => { %>
+        <% if(articles.length === 0){ %>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5>No Blog posted yet. Please Click on 'Compose' to create new Blog.</h5>
+            </div>
+          </div>
+        <% }else{ %>
+
+          <% articles.forEach(article => { %>
             
             <div class="card mt-4">
                 <div class="card-body">
@@ -12,15 +19,14 @@
                   <h6 class="card-subtitle mb-2 text-muted"><%= article.date %></h6>
                   <p class="card-text"><%= article.description %></p>
                   <form action="/delete" method="post">
-                      <a href="/articles/<%= article.title %>" class="btn btn-primary">Read More</a>
-                      <a href="/edit/<%= article.title %>" class="btn btn-secondary">Edit</a>
-                      <button type="submit" class="btn btn-danger" name="deleteName" value="<%= article.title %>">Delete</button>
+                      <a href="/articles/<%= article._id %>" class="btn btn-primary">Read More</a>
+                      <a href="/edit/<%= article._id %>" class="btn btn-secondary">Edit</a>
+                      <button type="submit" class="btn btn-danger" name="deleteName" value="<%= article._id %>">Delete</button>
                   </form>
                 </div>
               </div>
-
         <% }); %> 
-        
+        <% } %>
     </div>
   </body>
 </html>
